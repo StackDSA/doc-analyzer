@@ -12,6 +12,8 @@ dist/
 .env
 *.env
 
+.package-lock.json
+*.package-lock.json
 # OS junk
 .DS_Store
 Thumbs.db

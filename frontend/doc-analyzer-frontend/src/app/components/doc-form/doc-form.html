@@ -2,10 +2,10 @@
   <label for="formFile" class="form-label"
     >Upload a file (accept .pdf, .jpg, .png)</label
   >
-  <input class="form-control" type="file" id="formFile" />
+  <input class="form-control" type="file" id="formFile" (change)="onFileSelected($event)"/>
 </div>
 <button
-  (click)="onCLickSubmit()"
+  (click)="onUpload()"
   type="button"
   class="btn btn-primary form-button"
 >
