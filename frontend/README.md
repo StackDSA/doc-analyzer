@@ -1,59 +1,106 @@
-# DocAnalyzerFrontend
+Doc Analyzer is an AI-powered web application built using the MEAN stack (MongoDB, Express, Angular, Node.js).
+It allows users to upload PDF documents, automatically extracts the text content, and (in later stages) can summarize or explain the document using AI.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
+🚀 Features
 
-## Development server
+📤 Upload PDF files from the frontend
 
-To start a local development server, run:
+🧠 Extract text from PDFs using the backend (Node.js + pdf-parse)
 
-```bash
+⚙️ RESTful API endpoints for upload and extraction
+
+🪶 Simple Angular UI for user interaction
+
+🔐 Secure file handling with Multer
+
+🧹 Clean folder structure separating frontend and backend
+
+🧩 Tech Stack
+Layer	Technology
+Frontend	Angular 19
+Backend	Node.js (Express)
+Database	MongoDB
+File Upload	Multer
+PDF Parsing	pdf-parse
+AI Processing (Upcoming)	OpenAI API / Gemini API
+🗂️ Folder Structure
+doc-analyzer/
+│
+├── backend/
+│   ├── uploads/                # Uploaded PDFs
+│   ├── server.js               # Express server entry
+│   ├── package.json
+│   ├── .gitignore
+│   └── ...other backend files
+│
+├── frontend/
+│   └── doc-analyzer-frontend/
+│       ├── src/
+│       ├── proxy.conf.json
+│       ├── angular.json
+│       ├── package.json
+│       └── ...other frontend files
+│
+└── README.md
+
+⚙️ Backend Setup
+1️⃣ Navigate to backend
+cd backend
+
+2️⃣ Install dependencies
+npm install
+
+3️⃣ Create a .env file
+PORT=5000
+MONGO_URI=your_mongodb_url
+
+4️⃣ Start the server
+npm start
+
+💻 Frontend Setup
+1️⃣ Navigate to frontend
+cd frontend/doc-analyzer-frontend
+
+2️⃣ Install dependencies
+npm install
+
+3️⃣ Run the Angular app
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4️⃣ Access the app
+http://localhost:4200
 
-## Code scaffolding
+🔄 API Endpoints
+Method	Endpoint	Description
+POST	/extract	Uploads a PDF and extracts text content
+Example using cURL
+curl -X POST -F "file=@sample.pdf" http://localhost:5000/extract
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+Response:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+{
+  "text": "Extracted text content from your PDF..."
+}
 
-```bash
-ng generate --help
-```
+🧠 Upcoming Features
 
-## Building
+AI summarization and Q&A for uploaded PDFs
 
-To build the project run:
+Multi-document comparison
 
-```bash
-ng build
-```
+Secure cloud file storage (S3 / Firebase)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+User authentication system
 
-## Running unit tests
+🧾 License
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+This project is open source and available under the MIT License
+.
 
-```bash
-ng test
-```
+👨‍💻 Author
 
-## Running end-to-end tests
+Ishan Deshpande
+Built with ❤️ using JavaScript and curiosity.
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Would you like me to include setup instructions for integrating OpenAI (for the “AI summarization” step) so it’s future-ready?
