@@ -125,7 +125,3 @@ The frontend will run on `http://localhost:4200`.
 * If using Hugging Face, generate a token with only **Inference API** permissions for security.
 
 ---
-
-## License
-
-MIT License
