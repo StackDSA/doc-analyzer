@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { DocForm } from './components/doc-form/doc-form';
+import { UploadComponent } from './components/upload/upload';
 import { HttpClientModule } from '@angular/common/http';
-import { TextField } from "./components/text-field/text-field";
 
 @Component({
   selector: 'app-root',
-  imports: [DocForm, HttpClientModule, TextField],
+  imports: [HttpClientModule, UploadComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
 export class App {
   protected title = 'doc-analyzer-frontend';

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TextField } from './text-field';
+import { Upload } from './upload';
 
-describe('TextField', () => {
-  let component: TextField;
-  let fixture: ComponentFixture<TextField>;
+describe('Upload', () => {
+  let component: Upload;
+  let fixture: ComponentFixture<Upload>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TextField]
+      imports: [Upload]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TextField);
+    fixture = TestBed.createComponent(Upload);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

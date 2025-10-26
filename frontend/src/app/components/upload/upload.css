@@ -1,0 +1,22 @@
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.summary {
+  margin-top: 20px;
+}
+
+.question-section {
+  margin-top: 15px;
+}
+
+.answer {
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 4px;
+}

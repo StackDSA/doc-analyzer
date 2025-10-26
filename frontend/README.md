@@ -1,141 +1,131 @@
-# 📄 Doc Analyzer
+# Doc-Analyzer
 
-Doc Analyzer is an AI-powered web application built using the **MEAN stack** (MongoDB, Express, Angular, Node.js).  
-It allows users to **upload PDF documents**, automatically **extracts the text content**, and (in later stages) can **summarize or explain** the document using AI.
-
----
-
-## 🚀 Features
-
-- 📤 Upload PDF files from the frontend  
-- 🧠 Extract text from PDFs using the backend (Node.js + pdf-parse)  
-- ⚙️ RESTful API endpoints for upload and extraction  
-- 🪶 Simple Angular UI for user interaction  
-- 🔐 Secure file handling with Multer  
-- 🧹 Clean folder structure separating frontend and backend  
+A web application to upload PDF documents, generate summaries, and ask follow-up questions using AI.
 
 ---
 
-## 🧩 Tech Stack
+## Features
 
-| Layer | Technology |
-|-------|-------------|
-| Frontend | Angular 19 |
-| Backend | Node.js (Express) |
-| Database | MongoDB |
-| File Upload | Multer |
-| PDF Parsing | pdf-parse |
-| AI Processing (Upcoming) | OpenAI API / Gemini API |
+* Upload PDF documents.
+* Generate AI-powered summaries of uploaded PDFs.
+* Ask questions about the content of the PDF.
+* Simple Angular frontend with Node.js backend.
 
 ---
 
-## 🗂️ Folder Structure
+## Tech Stack
+
+* **Frontend:** Angular 19, TypeScript, HTML/CSS
+* **Backend:** Node.js, Express.js
+* **AI Integration:** OpenAI or Hugging Face (via Inference API)
+* **File Handling:** Multer for file uploads
+* **PDF Parsing:** `pdf-parse` library
+
+---
+
+## Project Structure
 
 ```
 doc-analyzer/
-│
-├── backend/
-│   ├── uploads/                # Uploaded PDFs
-│   ├── server.js               # Express server entry
-│   ├── package.json
-│   ├── .gitignore
-│   └── ...other backend files
-│
-├── frontend/
-│   └── doc-analyzer-frontend/
-│       ├── src/
-│       ├── proxy.conf.json
-│       ├── angular.json
-│       ├── package.json
-│       └── ...other frontend files
-│
-└── README.md
+├─ backend/
+│  ├─ server.js           # Express server
+│  ├─ routes/
+│  ├─ controllers/
+│  ├─ uploads/            # Temporary file storage
+│  └─ package.json
+├─ frontend/
+│  ├─ src/
+│  │  ├─ app/
+│  │  │  ├─ services/
+│  │  │  │  └─ doc-analyzer.service.ts
+│  │  │  ├─ components/
+│  │  │  │  └─ upload/
+│  │  │  │     ├─ upload.component.ts
+│  │  │  │     ├─ upload.component.html
+│  │  │  │     └─ upload.component.css
+│  │  │  └─ app.module.ts
+│  └─ package.json
+└─ README.md
 ```
 
 ---
 
-## ⚙️ Backend Setup
+## Setup Instructions
 
-### 1️⃣ Navigate to backend
+### Backend
+
+1. Navigate to the backend folder:
+
 ```bash
 cd backend
 ```
 
-### 2️⃣ Install dependencies
+2. Install dependencies:
+
 ```bash
 npm install
 ```
 
-### 3️⃣ Create a `.env` file
-```env
-PORT=5000
-MONGO_URI=your_mongodb_url
+3. Create a `.env` file in `backend/` with your API key:
+
+```
+OPENAI_API_KEY=your_openai_api_key_here
+# OR Hugging Face token if using HF API
+HF_API_KEY=your_hugging_face_token_here
 ```
 
-### 4️⃣ Start the server
+4. Start the server:
+
 ```bash
 npm start
 ```
 
+The backend server runs on `http://localhost:3000` by default.
+
 ---
 
-## 💻 Frontend Setup
+### Frontend
 
-### 1️⃣ Navigate to frontend
+1. Navigate to the frontend folder:
+
 ```bash
-cd frontend/doc-analyzer-frontend
+cd frontend
 ```
 
-### 2️⃣ Install dependencies
+2. Install dependencies:
+
 ```bash
 npm install
 ```
 
-### 3️⃣ Run the Angular app
+3. Start the Angular development server:
+
 ```bash
 ng serve
 ```
 
-### 4️⃣ Access the app
-```
-http://localhost:4200
-```
+The frontend will run on `http://localhost:4200`.
 
 ---
 
-## 🔄 API Endpoints
+## Usage
 
-| Method | Endpoint | Description |
-|---------|-----------|-------------|
-| `POST` | `/extract` | Uploads a PDF and extracts text content |
-
-### Example using cURL
-```bash
-curl -X POST -F "file=@sample.pdf" http://localhost:5000/extract
-```
-
-Response:
-```json
-{
-  "text": "Extracted text content from your PDF..."
-}
-```
+1. Open the app in your browser.
+2. Upload a PDF file using the file input.
+3. View the AI-generated summary.
+4. Ask follow-up questions based on the uploaded document.
 
 ---
 
-## 🧠 Upcoming Features
-- AI summarization and Q&A for uploaded PDFs  
-- Multi-document comparison  
-- Secure cloud file storage (S3 / Firebase)  
-- User authentication system  
+## Notes
+
+* Make sure the uploaded PDF is readable and not corrupted.
+* Ensure the backend `uploads` folder has proper write permissions.
+* Multer `file` field name must match the frontend `FormData.append('file', file)` field.
+* If using Hugging Face, generate a token with only **Inference API** permissions for security.
 
 ---
 
-## 🧾 License
-This project is open source and available under the [MIT License](LICENSE).
+## License
 
----
-
-## 👨‍💻 Author
-**Ishan Deshpande**  
-Built with ❤️ using JavaScript and curiosity.
+MIT License
