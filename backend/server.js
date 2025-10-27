@@ -54,7 +54,7 @@ app.post("/ask", async (req, res) => {
     if (!context) return res.status(404).json({ error: "Document not found or expired" });
 
     // Hugging Face inference call
-    const response = await fetch("https://api-inference.huggingface.co/models/deepset/roberta-base-squad2", {
+    const response = await fetch("https://router.huggingface.co/hf-inference/models/deepset/roberta-base-squad2", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${process.env.HF_API_KEY}`,
