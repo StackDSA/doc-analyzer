@@ -1,19 +1,21 @@
 <div class="upload-container">
 
-  <input type="file" (change)="onFileSelected($event)" accept=".pdf" />
-  <button (click)="upload()" [disabled]="!selectedFile">Upload PDF</button>
+  <div class="initial-div">
+    <input class="form-control" type="file" (change)="onFileSelected($event)" accept=".pdf" />
+    <button class="btn btn-primary" (click)="upload()" [disabled]="!selectedFile">Upload PDF</button>
+  </div>
 
-  <div *ngIf="summary">
+  <div class="summary" *ngIf="summary">
     <h3>Summary:</h3>
     <p>{{ summary }}</p>
   </div>
 
-  <div *ngIf="uploadedDocId">
-    <input type="text" [(ngModel)]="question" placeholder="Ask a question..." />
-    <button (click)="askQuestion()" [disabled]="!question">Ask</button>
+  <div class="question-section" *ngIf="uploadedDocId">
+    <input class="form-control" type="text" [(ngModel)]="question" placeholder="Ask a question..." />
+    <button class="btn btn-primary" (click)="askQuestion()" [disabled]="!question">Ask</button>
   </div>
 
-  <div *ngIf="answer">
+  <div class="answer" *ngIf="answer">
     <h3>Answer:</h3>
     <p>{{ answer }}</p>
   </div>
