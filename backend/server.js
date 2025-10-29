@@ -51,26 +51,35 @@ app.post("/ask", async (req, res) => {
       return res.status(400).json({ error: "docId and question required" });
 
     const context = docsMemory.get(docId);
-    if (!context) return res.status(404).json({ error: "Document not found or expired" });
+    if (!context)
+      return res.status(404).json({ error: "Document not found or expired" });
 
     // Hugging Face inference call
-    const response = await fetch("https://router.huggingface.co/hf-inference/models/deepset/roberta-base-squad2", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.HF_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ inputs: { question, context } }),
-    });
-
+    const response = await fetch(
+      "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.HF_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          inputs: context.slice(0, 5000), // limit large text
+          parameters: { max_length: 200, min_length: 50 },
+        }),
+      }
+    );
     const result = await response.json();
-
+    console.log("HF API response:", result);
     if (result.error) return res.status(500).json({ error: result.error });
 
-    res.json({ answer: result.answer || result[0]?.answer || "No answer found" });
+    res.json({
+      answer:
+        result.summary_text || result[0]?.summary_text || "No answer found",
+    });
   } catch (err) {
     console.error("HF API error:", err);
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err });
   }
 });
 
